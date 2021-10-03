@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "6426cb70-9cce-468e-b725-cc91b46a4639",
+		"name": "ProductManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Products",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "8PZwtdK6qES$D{QS",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "162737b5-bba0-428b-aa08-e5073788bbb7",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:52003/api/Products?skip=2&take=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52003",
+					"path": [
+						"api",
+						"Products"
+					],
+					"query": [
+						{
+							"key": "skip",
+							"value": "2"
+						},
+						{
+							"key": "take",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Product",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "8PZwtdK6qES$D{QS",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "162737b5-bba0-428b-aa08-e5073788bbb7",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"ProductName\":\"Xiaomi Mi Watch Lite Akıllı Saat\",\r\n\"ProductDescription\" : \"Ürün unisex olarak özel tasarımda üretilmiştir. Yeni nesil teknolojide geliştirilmiş ürün ekran ve kordon yapısıyla günlük kullanımda büyük bir şıklık yaratır. Kavisli dörtgen ekranı çerçevesiz olarak üretilmiştir. Gövde geçişi ince yapıdadır.\",\r\n\"ProductImageLink\":\"https://n11scdn1.akamaized.net/a1/1024/03/39/38/95/84344209.png\",\r\n\"ProductPrice\": 750\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:52003/api/NewProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52003",
+					"path": [
+						"api",
+						"NewProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "8PZwtdK6qES$D{QS",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "162737b5-bba0-428b-aa08-e5073788bbb7",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"Id\":4,\r\n\"ProductName\":\"Xiaomi Mi Watch Lite Akıllı Saat\",\r\n\"ProductDescription\" : \"Ürün unisex olarak özel tasarımda üretilmiştir. Yeni nesil teknolojide geliştirilmiş ürün ekran ve kordon yapısıyla günlük kullanımda büyük bir şıklık yaratır. Kavisli dörtgen ekranı çerçevesiz olarak üretilmiştir. Gövde geçişi ince yapıdadır.\",\r\n\"ProductImageLink\":\"https://n11scdn1.akamaized.net/a1/1024/03/39/38/95/84344209.png\",\r\n\"ProductPrice\": 750\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:52003/api/UpdateProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52003",
+					"path": [
+						"api",
+						"UpdateProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "8PZwtdK6qES$D{QS",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "162737b5-bba0-428b-aa08-e5073788bbb7",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:52003/api/Product?ProductId=4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "52003",
+					"path": [
+						"api",
+						"Product"
+					],
+					"query": [
+						{
+							"key": "ProductId",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
