@@ -1,0 +1,750 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FlexLabs.EntityFrameworkCore.Upsert</name>
+    </assembly>
+    <members>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.Internal.ConstantValue">
+            <summary>
+            This class represents a constant value from an expression, which will be passed as a command argument
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Internal.ConstantValue.#ctor(System.Object,Microsoft.EntityFrameworkCore.Metadata.IProperty,System.Reflection.MemberInfo)">
+            <summary>
+            Creates an instance of the ConstantValue class
+            </summary>
+            <param name="value">The value used in the expression</param>
+            <param name="property">The property from which the value is taken</param>
+            <param name="memberInfo">The memberInfo from which the value is taken</param>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Internal.ConstantValue.Value">
+            <summary>
+            The value used in the expression
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Internal.ConstantValue.Property">
+            <summary>
+            The property from which the value is taken
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Internal.ConstantValue.MemberInfo">
+            <summary>
+            The memberInfo from which the value is taken
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Internal.ConstantValue.ArgumentIndex">
+            <summary>
+            The index of the argument that will be passed to the Db command
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Internal.ConstantValue.GetConstantValues">
+            <inheritdoc/>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Internal.ConstantValue.GetPropertyValues">
+            <inheritdoc/>
+        </member>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.Internal.ExpressionHelpers">
+            <summary>
+            Expression helper classe that is used to deconstruct expression trees
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Internal.ExpressionHelpers.GetValue``1(System.Linq.Expressions.Expression,System.Linq.Expressions.LambdaExpression,System.Func{System.String,Microsoft.EntityFrameworkCore.Metadata.IProperty},System.Boolean)">
+            <summary>
+            Attempt to get the value of the expression
+            </summary>
+            <param name="expression">The expression we're processing</param>
+            <param name="container">The original lambda expression/func that contained this expression</param>
+            <param name="propertyFinder">Delegate used to find the EF Property class from a property name</param>
+            <param name="useExpressionCompiler">Allows enabling the fallback expression compiler</param>
+            <returns>An</returns>
+        </member>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.Internal.IKnownValue">
+            <summary>
+            Value of an expression
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Internal.IKnownValue.GetConstantValues">
+            <summary>
+            Get all the constants that are part of this value
+            </summary>
+            <returns>A set of contsants used in this value</returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Internal.IKnownValue.GetPropertyValues">
+            <summary>
+            Get all the properties that are part of this value
+            </summary>
+            <returns>A set of properties used in this value</returns>
+        </member>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.Internal.KnownExpression">
+            <summary>
+            A class that represents a known type of expression
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Internal.KnownExpression.#ctor(System.Linq.Expressions.ExpressionType,FlexLabs.EntityFrameworkCore.Upsert.Internal.IKnownValue)">
+            <summary>
+            Initialises a new instance of the class
+            </summary>
+            <param name="expressionType">The type of the operation being executed</param>
+            <param name="value">The value used in the expression</param>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Internal.KnownExpression.#ctor(System.Linq.Expressions.ExpressionType,FlexLabs.EntityFrameworkCore.Upsert.Internal.IKnownValue,FlexLabs.EntityFrameworkCore.Upsert.Internal.IKnownValue)">
+            <summary>
+            Initialises a new instance of the class
+            </summary>
+            <param name="expressionType">The type of the operation being executed</param>
+            <param name="value1">The value used in the expression</param>
+            <param name="value2">The value used in the expression</param>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Internal.KnownExpression.#ctor(System.Linq.Expressions.ExpressionType,FlexLabs.EntityFrameworkCore.Upsert.Internal.IKnownValue,FlexLabs.EntityFrameworkCore.Upsert.Internal.IKnownValue,FlexLabs.EntityFrameworkCore.Upsert.Internal.IKnownValue)">
+            <summary>
+            Initialises a new instance of the class
+            </summary>
+            <param name="expressionType">The type of the operation being executed</param>
+            <param name="value1">The value used in the expression</param>
+            <param name="value2">The value used in the expression</param>
+            <param name="value3">The value used in the expression</param>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Internal.KnownExpression.ExpressionType">
+            <summary>
+            The type of the operation being executed
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Internal.KnownExpression.Value1">
+            <summary>
+            The value used in the expression
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Internal.KnownExpression.Value2">
+            <summary>
+            The value used in the expression
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Internal.KnownExpression.Value3">
+            <summary>
+            The value used in the expression
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Internal.KnownExpression.GetConstantValues">
+            <inheritdoc/>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Internal.KnownExpression.GetPropertyValues">
+            <inheritdoc/>
+        </member>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.Internal.PropertyValue">
+            <summary>
+            This class represents access to a property within an expression
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Internal.PropertyValue.#ctor(System.String,System.Boolean,Microsoft.EntityFrameworkCore.Metadata.IProperty)">
+            <summary>
+            Create an instance of the class
+            </summary>
+            <param name="propertyName">The property that is accessed in the expression</param>
+            <param name="isLeftParameter">true if the property belongs to the first parameter to the expression. otherwise false</param>
+            <param name="property">Entity Framework model property class, that contains model metadata</param>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Internal.PropertyValue.PropertyName">
+            <summary>
+            The property that is accessed in the expression
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Internal.PropertyValue.IsLeftParameter">
+            <summary>
+            true if the property belongs to the first parameter to the expression. otherwise false
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Internal.PropertyValue.Property">
+            <summary>
+            An instance of the model property class, that contains model metadata
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Internal.PropertyValue.GetConstantValues">
+            <inheritdoc/>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Internal.PropertyValue.GetPropertyValues">
+            <inheritdoc/>
+        </member>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.InvalidMatchColumnsException">
+            <summary>
+            Thrown when using unsupported columns as the upsert match expression.
+            See: https://go.flexlabs.org/upsert.identitykeymatch
+            </summary>
+        </member>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Resources.ArgumentMustBeAnAnonymousObjectInitialiser">
+            <summary>
+              Looks up a localized string similar to {0} must be an anonymous object initialiser.
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Resources.ArgumentMustBeAnInitialiserOfTheTEntityType">
+            <summary>
+              Looks up a localized string similar to {0} must be an Initialiser of the TEntity type.
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Resources.CantCallMethodTwice">
+            <summary>
+              Looks up a localized string similar to Can&apos;t call {0} twice!.
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Resources.CantCallMethodWhenMethodHasBeenCalledAsTheyAreMutuallyExclusive">
+            <summary>
+              Looks up a localized string similar to Can&apos;t call {0} when {1} has been called, as they are mutually exclusive.
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Resources.DatabaseProviderNotSupportedYet">
+            <summary>
+              Looks up a localized string similar to Database provider not supported yet!.
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Resources.EntityTypeMustBeMappedInDbContext">
+            <summary>
+              Looks up a localized string similar to The TEntity type must be mapped in your DbContext..
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Resources.MatchColumnsHaveToBePropertiesOfTheTEntityClass">
+            <summary>
+              Looks up a localized string similar to Match columns have to be properties of the TEntity class.
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Resources.SeeLinkForMoreDetails">
+            <summary>
+              Looks up a localized string similar to See {0} for more details.
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Resources.SimplifyTheExpressionOrTryADifferentOne">
+            <summary>
+              Looks up a localized string similar to Simplify the expression, or try a different one..
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Resources.TheUpdateConditionMustBeAComparisonExpression">
+            <summary>
+              Looks up a localized string similar to The update condition must be a comparison expression.
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Resources.ThisTypeOfExpressionIsNotCurrentlySupported">
+            <summary>
+              Looks up a localized string similar to This type of expression is not currently supported:.
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Resources.UnknownProperty">
+            <summary>
+              Looks up a localized string similar to Unknown property {0}.
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Resources.UpdaterMustBeAnInitialiserOfTheTEntityType">
+            <summary>
+              Looks up a localized string similar to {0} must be an Initialiser of the TEntity type.
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Resources.UsingAutogeneratedIdentityKeysAsTheUpsertMatchExpressionIsNotSupportedPickANonGeneratedUniqueKey">
+            <summary>
+              Looks up a localized string similar to Using autogenerated / identity keys as the upsert match excession is not supported. Pick a non generated unique key..
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Resources.UsingConditionalUpdatesIsNotSupportedInMySQLDueToDatabaseSyntaxLimitations">
+            <summary>
+              Looks up a localized string similar to Using conditional updates is not supported in MySQL due to database syntax limitations..
+            </summary>
+        </member>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.Runners.DefaultRunners">
+            <summary>
+            Provides the default list of commannd runners
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.DefaultRunners.GetRunners">
+            <summary>
+            Returns the list of the default command runners
+            </summary>
+        </member>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.Runners.InMemoryUpsertCommandRunner">
+            <summary>
+            Upsert command runner for the Microsoft.EntityFrameworkCore.InMemory provider
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.InMemoryUpsertCommandRunner.Supports(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.InMemoryUpsertCommandRunner.Run``1(Microsoft.EntityFrameworkCore.DbContext,Microsoft.EntityFrameworkCore.Metadata.IEntityType,System.Collections.Generic.ICollection{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Linq.Expressions.Expression{System.Func{``0,``0,``0}},System.Linq.Expressions.Expression{System.Func{``0,``0,System.Boolean}},FlexLabs.EntityFrameworkCore.Upsert.Runners.RunnerQueryOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.InMemoryUpsertCommandRunner.RunAsync``1(Microsoft.EntityFrameworkCore.DbContext,Microsoft.EntityFrameworkCore.Metadata.IEntityType,System.Collections.Generic.ICollection{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Linq.Expressions.Expression{System.Func{``0,``0,``0}},System.Linq.Expressions.Expression{System.Func{``0,``0,System.Boolean}},FlexLabs.EntityFrameworkCore.Upsert.Runners.RunnerQueryOptions,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.Runners.IUpsertCommandRunner">
+            <summary>
+            Upsert command runner base interface
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.IUpsertCommandRunner.Supports(System.String)">
+            <summary>
+            Specifies whether this command runner supports a specific database provider
+            </summary>
+            <param name="name">Name of the database provider</param>
+            <returns>true if this runner supports the database provider specified; otherwise false</returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.IUpsertCommandRunner.Run``1(Microsoft.EntityFrameworkCore.DbContext,Microsoft.EntityFrameworkCore.Metadata.IEntityType,System.Collections.Generic.ICollection{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Linq.Expressions.Expression{System.Func{``0,``0,``0}},System.Linq.Expressions.Expression{System.Func{``0,``0,System.Boolean}},FlexLabs.EntityFrameworkCore.Upsert.Runners.RunnerQueryOptions)">
+            <summary>
+            Run the upsert command for the entities passed
+            </summary>
+            <typeparam name="TEntity">Entity type of the entities</typeparam>
+            <param name="dbContext">Data context to be used</param>
+            <param name="entityType">Metadata for the entity</param>
+            <param name="entities">Array of entities to be upserted</param>
+            <param name="matchExpression">Expression that represents which properties will be used as a match clause for the upsert command</param>
+            <param name="updateExpression">Expression that represents which properties will be updated, and what values will be set</param>
+            <param name="updateCondition">Expression that checks whether the database entry should be updated</param>
+            <param name="queryOptions">Options for the current query that will affect it's behaviour</param>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.IUpsertCommandRunner.RunAsync``1(Microsoft.EntityFrameworkCore.DbContext,Microsoft.EntityFrameworkCore.Metadata.IEntityType,System.Collections.Generic.ICollection{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Linq.Expressions.Expression{System.Func{``0,``0,``0}},System.Linq.Expressions.Expression{System.Func{``0,``0,System.Boolean}},FlexLabs.EntityFrameworkCore.Upsert.Runners.RunnerQueryOptions,System.Threading.CancellationToken)">
+            <summary>
+            Run the upsert command for the entities passed
+            </summary>
+            <typeparam name="TEntity">Entity type of the entities</typeparam>
+            <param name="dbContext">Data context to be used</param>
+            <param name="entityType">Metadata for the entity</param>
+            <param name="entities">Array of entities to be upserted</param>
+            <param name="matchExpression">Expression that represents which properties will be used as a match clause for the upsert command</param>
+            <param name="updateExpression">Expression that represents which properties will be updated, and what values will be set</param>
+            <param name="updateCondition">Expression that checks whether the database entry should be updated</param>
+            <param name="queryOptions">Options for the current query that will affect it's behaviour</param>
+            <param name="cancellationToken">The CancellationToken to observe while waiting for the task to complete.</param>
+            <returns>The task that represents the asynchronous upsert operation</returns>
+        </member>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.Runners.MySqlUpsertCommandRunner">
+            <summary>
+            Upsert command runner for the MySql.Data.EntityFrameworkCore or the Pomelo.EntityFrameworkCore.MySql providers
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.MySqlUpsertCommandRunner.Supports(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.MySqlUpsertCommandRunner.EscapeName(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.MySqlUpsertCommandRunner.SourcePrefix">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.MySqlUpsertCommandRunner.SourceSuffix">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.MySqlUpsertCommandRunner.TargetPrefix">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.MySqlUpsertCommandRunner.MaxQueryParams">
+            <inheritdoc/>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.MySqlUpsertCommandRunner.GenerateCommand(System.String,System.Collections.Generic.ICollection{System.Collections.Generic.ICollection{System.ValueTuple{System.String,FlexLabs.EntityFrameworkCore.Upsert.Internal.ConstantValue,System.String,System.Boolean}}},System.Collections.Generic.ICollection{System.ValueTuple{System.String,System.Boolean}},System.Collections.Generic.ICollection{System.ValueTuple{System.String,FlexLabs.EntityFrameworkCore.Upsert.Internal.IKnownValue}},FlexLabs.EntityFrameworkCore.Upsert.Internal.KnownExpression)">
+            <inheritdoc/>
+        </member>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.Runners.PostgreSqlUpsertCommandRunner">
+            <summary>
+            Upsert command runner for the Npgsql.EntityFrameworkCore.PostgreSQL provider
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.PostgreSqlUpsertCommandRunner.Supports(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.PostgreSqlUpsertCommandRunner.EscapeName(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.PostgreSqlUpsertCommandRunner.SourcePrefix">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.PostgreSqlUpsertCommandRunner.TargetPrefix">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.PostgreSqlUpsertCommandRunner.MaxQueryParams">
+            <inheritdoc/>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.PostgreSqlUpsertCommandRunner.GenerateCommand(System.String,System.Collections.Generic.ICollection{System.Collections.Generic.ICollection{System.ValueTuple{System.String,FlexLabs.EntityFrameworkCore.Upsert.Internal.ConstantValue,System.String,System.Boolean}}},System.Collections.Generic.ICollection{System.ValueTuple{System.String,System.Boolean}},System.Collections.Generic.ICollection{System.ValueTuple{System.String,FlexLabs.EntityFrameworkCore.Upsert.Internal.IKnownValue}},FlexLabs.EntityFrameworkCore.Upsert.Internal.KnownExpression)">
+            <inheritdoc/>
+        </member>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.Runners.RelationalUpsertCommandRunner">
+            <summary>
+            Base class with common functionality for most relational database runners
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.RelationalUpsertCommandRunner.GenerateCommand(System.String,System.Collections.Generic.ICollection{System.Collections.Generic.ICollection{System.ValueTuple{System.String,FlexLabs.EntityFrameworkCore.Upsert.Internal.ConstantValue,System.String,System.Boolean}}},System.Collections.Generic.ICollection{System.ValueTuple{System.String,System.Boolean}},System.Collections.Generic.ICollection{System.ValueTuple{System.String,FlexLabs.EntityFrameworkCore.Upsert.Internal.IKnownValue}},FlexLabs.EntityFrameworkCore.Upsert.Internal.KnownExpression)">
+            <summary>
+            Generate a full command for the opsert operation, given the inputs passed
+            </summary>
+            <param name="tableName">The name of the database table</param>
+            <param name="entities">A collection of entity data (column names and values) to be upserted</param>
+            <param name="joinColumns">The columns used to match existing items in the database</param>
+            <param name="updateExpressions">The expressions that represent update commands for matched entities</param>
+            <param name="updateCondition">The expression that tests whether existing entities should be updated</param>
+            <returns>A fully formed database query</returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.RelationalUpsertCommandRunner.EscapeName(System.String)">
+            <summary>
+            Escape the name of the table/column/schema in a given database language
+            </summary>
+            <param name="name">The name of the entity</param>
+            <returns>The escaped name of the entity</returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.RelationalUpsertCommandRunner.Parameter(System.Int32)">
+            <summary>
+            Reference an indexed parameter passed to the query in a given database language
+            </summary>
+            <param name="index">The 0 based index of the parameter</param>
+            <returns>The reference to the parameter</returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.RelationalUpsertCommandRunner.Variable(System.String)">
+            <summary>
+            Reference an named variable defined by the query runner
+            </summary>
+            <param name="name">The name of the variable</param>
+            <returns>The reference to the variable</returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.RelationalUpsertCommandRunner.GetSchema(Microsoft.EntityFrameworkCore.Metadata.IEntityType)">
+            <summary>
+            Get the escaped database table schema
+            </summary>
+            <param name="entityType">The entity type of the table</param>
+            <returns>The escaped schema name of the table, followed by a '.'. If the table has no schema - returns null</returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.RelationalUpsertCommandRunner.GetTableName(Microsoft.EntityFrameworkCore.Metadata.IEntityType)">
+            <summary>
+            Get the fully qualified, escaped table name
+            </summary>
+            <param name="entityType">The entity type of the table</param>
+            <returns>The fully qualified and escaped table reference</returns>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.RelationalUpsertCommandRunner.SourcePrefix">
+            <summary>
+            Prefix used to reference source dataset columns
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.RelationalUpsertCommandRunner.SourceSuffix">
+            <summary>
+            Suffix used when referencing source dataset columns
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.RelationalUpsertCommandRunner.TargetPrefix">
+            <summary>
+            Prefix used to reference target table columns
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.RelationalUpsertCommandRunner.TargetSuffix">
+            <summary>
+            Suffix used when referencing target table columns
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.RelationalUpsertCommandRunner.MaxQueryParams">
+            <summary>
+            The maximum number of parameters that the db engine allows to be passed to a query
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.RelationalUpsertCommandRunner.ExpandValue(FlexLabs.EntityFrameworkCore.Upsert.Internal.IKnownValue,System.Func{System.String,System.String})">
+            <summary>
+            Expand a known value into database syntax
+            </summary>
+            <param name="value">The KnownValue that has to be converted to database language</param>
+            <param name="expandLeftColumn">Override the way the table column names are rendered</param>
+            <returns>A string containing the expression converted to database language</returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.RelationalUpsertCommandRunner.ExpandExpression(FlexLabs.EntityFrameworkCore.Upsert.Internal.KnownExpression,System.Func{System.String,System.String})">
+            <summary>
+            Expand a known expression into database syntax
+            </summary>
+            <param name="expression">The KnownExpression that has to be converted to database language</param>
+            <param name="expandLeftColumn">Override the way the table column names are rendered</param>
+            <returns>A string containing the expression converted to database language</returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.RelationalUpsertCommandRunner.IsNullExpression(FlexLabs.EntityFrameworkCore.Upsert.Internal.IKnownValue,System.Boolean)">
+            <summary>
+            Translates a check for null values to sql
+            </summary>
+            <param name="value">Value to be checked for null</param>
+            <param name="notNull">Reverse the check to test for non null value</param>
+            <returns>Sql statement representing the check</returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.RelationalUpsertCommandRunner.GetSimpleOperator(System.Linq.Expressions.ExpressionType)">
+            <summary>
+            Get the symbol used for basic expression operators in the database's syntax
+            </summary>
+            <param name="expressionType">Type of the basic expression</param>
+            <returns>A string containing the operator</returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.RelationalUpsertCommandRunner.Run``1(Microsoft.EntityFrameworkCore.DbContext,Microsoft.EntityFrameworkCore.Metadata.IEntityType,System.Collections.Generic.ICollection{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Linq.Expressions.Expression{System.Func{``0,``0,``0}},System.Linq.Expressions.Expression{System.Func{``0,``0,System.Boolean}},FlexLabs.EntityFrameworkCore.Upsert.Runners.RunnerQueryOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.RelationalUpsertCommandRunner.RunAsync``1(Microsoft.EntityFrameworkCore.DbContext,Microsoft.EntityFrameworkCore.Metadata.IEntityType,System.Collections.Generic.ICollection{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Linq.Expressions.Expression{System.Func{``0,``0,``0}},System.Linq.Expressions.Expression{System.Func{``0,``0,System.Boolean}},FlexLabs.EntityFrameworkCore.Upsert.Runners.RunnerQueryOptions,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.Runners.RunnerQueryOptions">
+            <summary>
+            Options to configure the query behaviour
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.RunnerQueryOptions.NoUpdate">
+            <summary>
+            Specifies that if a match is found, no action will be taken on the entity
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.RunnerQueryOptions.UseExpressionCompiler">
+            <summary>
+            If true, will fallback to the (slower) expression compiler for unhandled update expressions
+            </summary>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.RunnerQueryOptions.AllowIdentityMatch">
+            <summary>
+            If true, allows matching entities on auto-generated columns
+            </summary>
+        </member>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.Runners.SqliteUpsertCommandRunner">
+            <summary>
+            Upsert command runner for the Microsoft.EntityFrameworkCore.Sqlite provider
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.SqliteUpsertCommandRunner.Supports(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.SqliteUpsertCommandRunner.MaxQueryParams">
+            <inheritdoc/>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.SqliteUpsertCommandRunner.GetSchema(Microsoft.EntityFrameworkCore.Metadata.IEntityType)">
+            <summary>
+            Sqlite doesn't support table schemas, so this method returns null
+            </summary>
+            <param name="entityType">The entity type of the table</param>
+            <returns>null</returns>
+        </member>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.Runners.SqlServerUpsertCommandRunner">
+            <summary>
+            Upsert command runner for the Microsoft.EntityFrameworkCore.SqlServer provider
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.SqlServerUpsertCommandRunner.Supports(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.SqlServerUpsertCommandRunner.EscapeName(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.SqlServerUpsertCommandRunner.SourcePrefix">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.SqlServerUpsertCommandRunner.TargetPrefix">
+            <inheritdoc/>
+        </member>
+        <member name="P:FlexLabs.EntityFrameworkCore.Upsert.Runners.SqlServerUpsertCommandRunner.MaxQueryParams">
+            <inheritdoc/>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.SqlServerUpsertCommandRunner.GenerateCommand(System.String,System.Collections.Generic.ICollection{System.Collections.Generic.ICollection{System.ValueTuple{System.String,FlexLabs.EntityFrameworkCore.Upsert.Internal.ConstantValue,System.String,System.Boolean}}},System.Collections.Generic.ICollection{System.ValueTuple{System.String,System.Boolean}},System.Collections.Generic.ICollection{System.ValueTuple{System.String,FlexLabs.EntityFrameworkCore.Upsert.Internal.IKnownValue}},FlexLabs.EntityFrameworkCore.Upsert.Internal.KnownExpression)">
+            <inheritdoc/>
+        </member>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.Runners.UpsertCommandRunnerBase">
+            <summary>
+            Base class with common helper methods for upsert command runners
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.UpsertCommandRunnerBase.Supports(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.UpsertCommandRunnerBase.Run``1(Microsoft.EntityFrameworkCore.DbContext,Microsoft.EntityFrameworkCore.Metadata.IEntityType,System.Collections.Generic.ICollection{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Linq.Expressions.Expression{System.Func{``0,``0,``0}},System.Linq.Expressions.Expression{System.Func{``0,``0,System.Boolean}},FlexLabs.EntityFrameworkCore.Upsert.Runners.RunnerQueryOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.UpsertCommandRunnerBase.RunAsync``1(Microsoft.EntityFrameworkCore.DbContext,Microsoft.EntityFrameworkCore.Metadata.IEntityType,System.Collections.Generic.ICollection{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Linq.Expressions.Expression{System.Func{``0,``0,``0}},System.Linq.Expressions.Expression{System.Func{``0,``0,System.Boolean}},FlexLabs.EntityFrameworkCore.Upsert.Runners.RunnerQueryOptions,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.Runners.UpsertCommandRunnerBase.ProcessMatchExpression``1(Microsoft.EntityFrameworkCore.Metadata.IEntityType,System.Linq.Expressions.Expression{System.Func{``0,System.Object}},FlexLabs.EntityFrameworkCore.Upsert.Runners.RunnerQueryOptions)">
+            <summary>
+            Extract property metadata from the match expression
+            </summary>
+            <typeparam name="TEntity">Type of the entity being upserted</typeparam>
+            <param name="entityType">Metadata type of the entity being upserted</param>
+            <param name="matchExpression">The match expression provided by the user</param>
+            <param name="queryOptions">Options for the current query that will affect it's behaviour</param>
+            <returns>A list of model properties used to match entities</returns>
+        </member>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.UnsupportedExpressionException">
+            <summary>
+            Thrown when using unsupported expressions in the update clause
+            See: https://go.flexlabs.org/upsert.expressions
+            </summary>
+        </member>
+        <member name="T:FlexLabs.EntityFrameworkCore.Upsert.UpsertCommandBuilder`1">
+            <summary>
+            Used to configure an upsert command before running it
+            </summary>
+            <typeparam name="TEntity">The type of the entity to be upserted</typeparam>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.UpsertCommandBuilder`1.#ctor(Microsoft.EntityFrameworkCore.DbContext,System.Collections.Generic.ICollection{`0})">
+            <summary>
+            Initialise an instance of the UpsertCommandBuilder
+            </summary>
+            <param name="dbContext">The data context that will be used to upsert entities</param>
+            <param name="entities">The collection of entities to be upserted</param>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.UpsertCommandBuilder`1.On(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+            <summary>
+            Specifies which columns will be used to find matching entities between the collection passed and the ones stored in the database
+            </summary>
+            <param name="match">The expression that will identity one or several columns to be used in the match clause</param>
+            <returns>The current instance of the UpsertCommandBuilder</returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.UpsertCommandBuilder`1.AllowIdentityMatch">
+            <summary>
+            Allows for a way to force allow matching rows on auto-generated columns
+            </summary>
+            <returns>The current instance of the UpsertCommandBuilder</returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.UpsertCommandBuilder`1.WhenMatched(System.Linq.Expressions.Expression{System.Func{`0,`0}})">
+            <summary>
+            Specifies which columns should be updated when a matched entity is found
+            </summary>
+            <param name="updater">The expression that returns a new instance of TEntity, with the columns that have to be updated being initialised with new values</param>
+            <returns>The current instance of the UpsertCommandBuilder</returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.UpsertCommandBuilder`1.WhenMatched(System.Linq.Expressions.Expression{System.Func{`0,`0,`0}})">
+            <summary>
+            Specifies which columns should be updated when a matched entity is found.
+            The second type parameter points to the entity that was originally passed to be inserted
+            </summary>
+            <param name="updater">The expression that returns a new instance of TEntity, with the columns that have to be updated being initialised with new values</param>
+            <returns>The current instance of the UpsertCommandBuilder</returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.UpsertCommandBuilder`1.UpdateIf(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Specifies a condition that has to be validated before updating existing entries
+            </summary>
+            <param name="condition">The condition that checks if a database entry should be updated</param>
+            <returns>The current instance of the UpsertCommandBuilder</returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.UpsertCommandBuilder`1.UpdateIf(System.Linq.Expressions.Expression{System.Func{`0,`0,System.Boolean}})">
+            <summary>
+            Specifies a condition that has to be validated before updating existing entries
+            The second type parameter points to the entity that was originally passed to be inserted
+            </summary>
+            <param name="condition">The condition that checks if a database entry should be updated</param>
+            <returns>The current instance of the UpsertCommandBuilder</returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.UpsertCommandBuilder`1.WithFallbackExpressionCompiler">
+            <summary>
+            Enables the use of the fallback expression compiler. This can be enabled to add support for more expression types in the Update statement
+            at the cost of slower evaluation.
+            If you have an expression type that isn't supported out of the box, please see https://go.flexlabs.org/upsert.expressions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.UpsertCommandBuilder`1.NoUpdate">
+            <summary>
+            Specifies that if a match is found, no action will be taken on the entity
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.UpsertCommandBuilder`1.Run">
+            <summary>
+            Execute the upsert command against the database
+            </summary>
+        </member>
+        <member name="M:FlexLabs.EntityFrameworkCore.Upsert.UpsertCommandBuilder`1.RunAsync(System.Threading.CancellationToken)">
+            <summary>
+            Execute the upsert command against the database asynchronously
+            </summary>
+            <param name="token">The cancellation token for this transaction</param>
+            <returns>The asynchronous task for this transaction</returns>
+        </member>
+        <member name="T:Microsoft.EntityFrameworkCore.UpsertExtensions">
+            <summary>
+            Extension methods that provide access to upsert commands on a DbContext
+            </summary>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.UpsertExtensions.Upsert``1(Microsoft.EntityFrameworkCore.DbContext,``0)">
+            <summary>
+            Attempt to insert an entity to the database, or update it if one already exists
+            </summary>
+            <typeparam name="TEntity">The type of the entity being upserted</typeparam>
+            <param name="dbContext">The data context used to connect to the database</param>
+            <param name="entity">The entity that is being upserted</param>
+            <returns>The upsert command builder that is used to configure and run the upsert operation</returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.UpsertExtensions.UpsertRange``1(Microsoft.EntityFrameworkCore.DbContext,``0[])">
+            <summary>
+            Attempt to insert an array of entities to the database, or update them if they already exist
+            </summary>
+            <typeparam name="TEntity">The type of the entity being upserted</typeparam>
+            <param name="dbContext">The data context used to connect to the database</param>
+            <param name="entities">The entities that are being upserted</param>
+            <returns>The upsert command builder that is used to configure and run the upsert operation</returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.UpsertExtensions.UpsertRange``1(Microsoft.EntityFrameworkCore.DbContext,System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Attempt to insert an array of entities to the database, or update them if they already exist
+            </summary>
+            <typeparam name="TEntity">The type of the entity being upserted</typeparam>
+            <param name="dbContext">The data context used to connect to the database</param>
+            <param name="entities">The entities that are being upserted</param>
+            <returns>The upsert command builder that is used to configure and run the upsert operation</returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.UpsertExtensions.Upsert``1(Microsoft.EntityFrameworkCore.DbSet{``0},``0)">
+            <summary>
+            Attempt to insert an entity to the database, or update it if one already exists
+            </summary>
+            <typeparam name="TEntity">The type of the entity being upserted</typeparam>
+            <param name="dbSet">The db set where the item will be upserted</param>
+            <param name="entity">The entity that is being upserted</param>
+            <returns>The upsert command builder that is used to configure and run the upsert operation</returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.UpsertExtensions.UpsertRange``1(Microsoft.EntityFrameworkCore.DbSet{``0},``0[])">
+            <summary>
+            Attempt to insert an array of entities to the database, or update them if they already exist
+            </summary>
+            <typeparam name="TEntity">The type of the entity being upserted</typeparam>
+            <param name="dbSet">The db set where the items will be upserted</param>
+            <param name="entities">The entities that are being upserted</param>
+            <returns>The upsert command builder that is used to configure and run the upsert operation</returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.UpsertExtensions.UpsertRange``1(Microsoft.EntityFrameworkCore.DbSet{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Attempt to insert an array of entities to the database, or update them if they already exist
+            </summary>
+            <typeparam name="TEntity">The type of the entity being upserted</typeparam>
+            <param name="dbSet">The db set where the items will be upserted</param>
+            <param name="entities">The entities that are being upserted</param>
+            <returns>The upsert command builder that is used to configure and run the upsert operation</returns>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.UpsertServiceExtensions">
+            <summary>
+            Extension methods to replace the currently registered default runner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.UpsertServiceExtensions.ReplaceUpsertCommandRunner``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Register a custom upsert command runner, to replace the built-in ones
+            This method can only be used when the service provider is being built externally and passed to Microsoft.EntityFrameworkCore.DbContextOptionsBuilder
+            </summary>
+            <typeparam name="TRunner">Type of the upsert command runner class</typeparam>
+            <param name="services">Service collection where the runner should be registered</param>
+            <returns>The service collection passed to this call</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.UpsertServiceExtensions.ReplaceUpsertCommandRunner``1(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            Register a custom upsert command runner, to replace the built-in ones
+            This method can only be used when EF is building and managing its internal service
+            provider. If the service provider is being built externally and passed to Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseInternalServiceProvider(System.IServiceProvider),
+            then replacement services should be configured on that service provider before
+            it is passed to EF.
+            The replacement service gets the same scope as the EF service that it is replacing.
+            </summary>
+            <typeparam name="TRunner">Type of the upsert command runner class</typeparam>
+            <param name="builder">The DbContextOptionsBuilder that is used to configure  the DbContext</param>
+            <returns>The DbContextOptionsBuilder passed to this call</returns>
+        </member>
+    </members>
+</doc>
